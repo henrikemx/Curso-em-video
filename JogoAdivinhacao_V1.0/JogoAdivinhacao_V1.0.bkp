@@ -1,0 +1,67 @@
+/*
+ * JogoAdivinhacao_V1.0.cpp
+ *
+ *  Created on: 25 de fev de 2018
+ *      Author: kryptonian
+ *
+ *  Nessa versão do jogo da adivinhação, ao invés de tentarmos adivinhar o numero a cada roada,
+ *  iremos fazer com que o computador "adivinhe" somente 1x, enquanto o usuário irá eecutar diversas
+ *  tentaivas de adivinhar o numero gerado pelo computador.
+ *
+ *  Nesse caso, o computador irá dar dicas ao usuário, se o número está acima ou abaixo do numero gerado (pensado).
+ *
+ */
+
+#include <iostream>
+#include <ctime>
+#include <cmath>
+#include <cstdlib>
+#include <windows.h>
+
+using namespace std;
+
+int main(){
+
+	int cpu, usuario, cnt, vit = 0, derr = 0;
+	string resp = "s";
+
+	do {
+		cout << endl;
+		cout << " ==== Jogo da Adivinhação ====" << endl;
+		cout << "Aguarde... estou pensando em um número !!!" << endl;
+		Sleep(2000);
+
+		// aqui é gerado o número aleatório pelo computador...
+
+		srand(time(NULL));
+		cpu = rand() % 10;
+
+		// aqui, é solicitado ao usuário, que adivinhe o número...
+
+		cout << "Adivinhe o número em que pensei: [de 0 a 10]  ";
+		cin >> usuario;
+
+		if (cpu == usuario){
+			cout << "ACERTOU !! Voce GANHOU !!!" << cpu << endl;
+			vit += 1;
+		}
+		if (usuario > cpu) {
+			cout << "ERROU !! Menos !!!" << endl;
+			derr += 1;
+		}
+		if (usuario < cpu){
+			cout << "ERROU !! Mais !!!" << endl;
+			derr += 1;
+		}
+		cout << endl;
+		cout << "Continua ? [S/N]  ";
+		cin >> resp;
+		cnt += 1;
+	} while (resp == "s");
+
+	cout << endl;
+	cout << "==== Fim do Programa ====" << endl;
+	cout << "\nVoce jogou " << cnt << "x, GANHOU " << vit << "x e PERDEU " << derr << "x" << endl;
+	//cout << "Voce " << vit << "x" << endl;
+	// cout << "Voce " << derr << "x" << endl;
+}
