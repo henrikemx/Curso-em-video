@@ -1,0 +1,98 @@
+/*
+ * ConvTemp.cpp
+ *
+ *  Created on: 25 de fev de 2018
+ *      Author: kryptonian
+ *
+ *  Este código é baseado no exercicio da Aula 14 do curso de Python3, Mundo 1
+ *
+ *  Conversor de Temperatura
+ *
+ *  Conversão de ºC em ºF ((9 x ºC/5)+32)
+ *  Conversão de ºF em ºC
+ *
+ */
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+	double c_k, k_c, f_c, c_f, f_k, k_f, f, c, k;
+	int opcao;
+	string r = "s";
+
+	do {
+		cout << "\n==== Converter de Temperatura ====" << endl;
+		cout << "Escolha o tipo de conversão" << endl;
+		cout << "**********************" << endl;
+		cout << "[1] de °C para °F e °K" << endl;
+		cout << "[2] de °F para °C e °K" << endl;
+		cout << "[3] de °K para °F e °C" << endl;
+		cout << "**********************" << endl;
+		cout << "Informe a opção: ";
+		cin >> opcao;
+		cout << "Informe a temperatura: ";
+
+		switch (opcao){
+			case 1:
+				cin >> c;
+				c_f = 1.8 * c + 32;
+				c_k = c + 273;
+				break;
+			case 2:
+				cin >> f;
+				f_c = (f - 32) / 1.8;
+				f_k = c_f + 273;
+				break;
+			case 3:
+				cin >> k;
+				k_f = 1.8 * c_f + 32;
+				k_c = k - 273;
+				break;
+			default:
+				cout << "Opção INVÁLIDA !!!" << endl;
+		}
+
+		// abaixo, a fórmula para a conversão de Celsius para Farenheit...
+		// f = ((9 * c) / 5) + 32;
+
+		c_f = (1.8 * c) + 32;
+		c_k = c + 273;
+
+		f_c = (f - 32) / 1.8;
+		f_k = c_f + 273;
+
+		k_c = k - 273;
+		k_f = (1.8 * k_c) + 32;
+
+		switch (opcao){
+			case 1:
+				cout << "\n" << c << "°C corresponde a " << c_f << "°F e a " << c_k << "°K !!!";
+				// cout << "\n" << c << "°C corresponde a " << c_k << "°K !!!";
+				break;
+			case 2:
+				cout << "\n" << f << "°F corresponde a " << f_c << "°C e a " << f_k << "°K !!!";
+				// cout << "\n" << f << "°F corresponde a " << f_k << "°K !!!";
+				break;
+			case 3:
+				cout << "\n" << k << "°K corresponde a " << k_c << "°C e a " << k_f << "°F !!!";
+				// cout << "\n" << k << "°K corresponde a " << k_f << "°F !!!";
+				break;
+			default:
+				cout << "Opção INVÁLIDA !!" << endl;
+				break;
+		}
+		cout << endl;
+		cout << "\n==== Deseja continuar ? ====" << endl;
+		cout << "\nResposta: [S/N] ";
+		cin >> r;
+	} while ((r == "s") or (r ==  "S"));
+	cout << endl;
+	cout << "\n==== Fim do Programa ====" << endl;
+	system("pause");
+	return 0;
+}
+
+
